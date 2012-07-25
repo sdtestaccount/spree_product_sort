@@ -1,9 +1,8 @@
-<%= render :partial => 'admin/shared/product_sub_menu' %>
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
 <h1><%= t('positions_for_products_in_taxons') %></h1>
 
 <% @taxons.each do |taxon| %>
   <h2><%= taxon.name %></h2>
   
   <%= render :partial=> 'product_list', :locals => {:taxon => taxon} %>
-  
 <% end %>

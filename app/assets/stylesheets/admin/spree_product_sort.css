@@ -1,0 +1,21 @@
+ul.products_ul {
+  list-type: none;
+  margin-left: 20px;
+  border: 1px solid #CCC;
+}
+
+.products_ul li {
+  border: 1px solid #DDD;
+  background-color: #F9F9F9;
+  list-style: none;
+  margin-left: 0;
+  padding: 3px;
+}
+
+.products_ul li .handle {
+  display: inline-block;
+  color: silver;
+  width: 1.5em;
+  cursor: row-resize;
+  text-align: center;
+}

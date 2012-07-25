@@ -3,12 +3,12 @@ Spree::Product.class_eval do
   has_many :taxons, :through=>:product_taxons
 
   #default_scope :include=>:product_taxons, :order=>"product_taxons.position"
-  scope :ordered, {:include=>:product_taxons, :order=>"product_taxons.position"}
+  scope :ordered, {:include=>:product_taxons, :order=>"spree_product_taxons.position"}
 
   scope :available, lambda { |*args| 
-    where(["products.available_on <= ?", args.first || Time.zone.now]).
+    where(["spree_products.available_on <= ?", args.first || Time.zone.now]).
       includes(:product_taxons).
-      order('product_taxons.taxon_id, product_taxons.position') #group positions by taxon so that home page (0) works
+      order('spree_product_taxons.taxon_id, spree_product_taxons.position') #group positions by taxon so that home page (0) works
   }
 
   def in_taxon?(taxon)
