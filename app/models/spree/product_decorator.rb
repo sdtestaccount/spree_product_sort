@@ -11,6 +11,13 @@ Spree::Product.class_eval do
       order('spree_product_taxons.taxon_id, spree_product_taxons.position') #group positions by taxon so that home page (0) works
   }
 
+  after_create :create_product_taxon
+
+  def create_product_taxon
+    # new product added, create initial product_taxon assignment so that products on the main page can also be sorted.
+    Spree::ProductTaxon.create(:product_id=>self.id, :taxon_id=>0)
+  end
+
   def in_taxon?(taxon)
     case taxon
       when String
