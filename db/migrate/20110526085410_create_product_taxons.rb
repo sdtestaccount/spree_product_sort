@@ -11,20 +11,11 @@ class CreateProductTaxons < ActiveRecord::Migration
     ActiveRecord::Base.connection.
       execute("select product_id, taxon_id from spree_products_taxons order by taxon_id, product_id").
       each do |res|
-        pid = res[0].to_i
-        tid = res[1].to_i
+        pid = res["product_id"].to_i
+        tid = res["taxon_id"].to_i
         
         Spree::ProductTaxon.create(:product_id=>pid, :taxon_id=>tid)
      end
-      
-    # create an extra PTs  for each product with taxon=0 for Homepage
-    ActiveRecord::Base.connection.
-      execute("select id from spree_products order by id").
-      each do |res|
-        pid = res[0].to_i
-        
-        Spree::ProductTaxon.create(:product_id=>pid, :taxon_id=>0)
-      end
       
     end
 
