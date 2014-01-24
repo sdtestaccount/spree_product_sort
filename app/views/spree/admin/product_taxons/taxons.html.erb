@@ -1,0 +1,6 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+<h1><%= t('positions_for_products_in_taxons') %></h1>
+
+<% @taxons.each do |taxon| %>
+  <h2><%= link_to taxon.name, admin_product_sort_url(taxon.id) %></h2>
+<% end %>
