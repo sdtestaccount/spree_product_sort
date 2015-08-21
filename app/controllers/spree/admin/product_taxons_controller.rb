@@ -1,10 +1,14 @@
 module Spree
   module Admin
-    class ProductTaxonsController
+    class ProductTaxonsController < ResourceController
       def index
         puts "INDEX ACTION - ProductTaxonsController"
         puts "PARAMS in index action: #{params.inspect}"
         render :text => params.inspect
+      end
+
+      def model_class
+        Spree::Taxon
       end
 
       def taxons
