@@ -1,6 +1,6 @@
 module Spree
   module Admin
-    class ProductTaxonsController < ResourceController
+    class ProductTaxonsController
       def index
         puts "INDEX ACTION - ProductTaxonsController"
         puts "PARAMS in index action: #{params.inspect}"
